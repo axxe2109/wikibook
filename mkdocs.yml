@@ -1,0 +1,7 @@
+site_name: Mi Wiki
+nav:
+  - Inicio: index.md
+  - Guía Rápida: guia.md
+  - Tutoriales:
+    - CKAD: ckad.md
+  - Acerca de: acerca.md
