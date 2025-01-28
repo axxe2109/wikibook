@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>CKAD - Mi Wiki</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Mi Wiki</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../guia.md" class="nav-link">Guía Rápida</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Tutoriales</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">CKAD</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../acerca.md" class="nav-link">Acerca de</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#ckad" class="nav-link">CKAD</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#configuration" class="nav-link">Configuration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#001-define-build-and-modify-container-images" class="nav-link">001 - Define, build and modify container images</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#002-commands" class="nav-link">002 - Commands</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#003-commands-and-arguments-in-docker" class="nav-link">003 - Commands and Arguments in Docker</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#004-commands-and-arguments-in-kubernetes" class="nav-link">004 - Commands and Arguments in Kubernetes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#005-a-quick-note-on-editing-pods-and-deployments" class="nav-link">005 - A quick note on editing Pods and Deployments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#006-environment-variables" class="nav-link">006 - Environment Variables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#007-configmaps" class="nav-link">007 - ConfigMaps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#core-concepts" class="nav-link">Core Concepts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#001-recap-kubernetes-architecture" class="nav-link">001 - Recap - Kubernetes Architecture</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#node" class="nav-link">Node:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cluster" class="nav-link">Cluster:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#master" class="nav-link">Master:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#componentes" class="nav-link">Componentes:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#master-vs-worker-nodes" class="nav-link">Master vs Worker Nodes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#kubectl" class="nav-link">Kubectl</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#002-docker-vs-containerd" class="nav-link">002 - Docker-vs-ContainerD</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#003-recap-pods" class="nav-link">003 - Recap - Pods</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#pod" class="nav-link">POD</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#multi-container-pod" class="nav-link">Multi-Container Pod</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#kubectl_1" class="nav-link">Kubectl</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#004-pods-with-yaml" class="nav-link">004 - Pods with YAML</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#yaml" class="nav-link">YAML</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#comandos" class="nav-link">Comandos</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#005-creating-pod-with-yaml" class="nav-link">005 - Creating Pod with YAML</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#006-edit-pods" class="nav-link">006 - Edit PODS</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#edit-pods" class="nav-link">Edit Pods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#007-replicasets" class="nav-link">007 - Replicasets</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#008-deployments" class="nav-link">008 - Deployments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#010-namespaces" class="nav-link">010 - Namespaces</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#011-certification-tip-imperative-commands" class="nav-link">011 - Certification Tip: Imperative Commands</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#practice-test" class="nav-link">Practice Test</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#001-pods" class="nav-link">001 - Pods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#002-replicasets" class="nav-link">002 - Replicasets</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#003-deployments" class="nav-link">003 - Deployments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#004-namespaces" class="nav-link">004 - Namespaces</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#005-imperative-commands" class="nav-link">005 - Imperative Commands</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#skels" class="nav-link">Skels</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#001-pods_1" class="nav-link">001 - Pods</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#002-replicasets_1" class="nav-link">002 - Replicasets</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#003-deployments_1" class="nav-link">003 - Deployments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="ckad">CKAD</h1>
+<h1 id="configuration">Configuration</h1>
+<h1 id="001-define-build-and-modify-container-images">001 - Define, build and modify container images</h1>
+<h3 id="how-to-create-my-own-image">How to create my own image?</h3>
+<p>Ejemplo:</p>
+<p>Crear una imagen para una aplicacion web sencilla</p>
+<p>1. Anotar los pasos del proceso de como se haria manualmente.</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/sq5image.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/sq5image.png" /></a></p>
+<p>2. Crear el archivo Dockerfile con las instrucciones</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/SuWimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/SuWimage.png" /></a></p>
+<p>3. Crear la imagen con el comando de compilacion de Docker</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/DS1image.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/DS1image.png" /></a></p>
+<p>4. Subir la imagen a dockerfile para que sea publica</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/AJEimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/AJEimage.png" /></a></p>
+<p>Dockerfile</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/xiOimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/xiOimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/9UNimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/9UNimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/UU5image.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/UU5image.png" /></a></p>
+<p>Layered architecture</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/5Zmimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/5Zmimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/NWCimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/NWCimage.png" /></a></p>
+<p>Docker build output</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/gN4image.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/gN4image.png" /></a></p>
+<p>failure</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/Kakimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/Kakimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/KCBimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/KCBimage.png" /></a></p>
+<h1 id="002-commands">002 - Commands</h1>
+<p>docker build -t webapp-color .</p>
+<h1 id="003-commands-and-arguments-in-docker">003 - Commands and Arguments in Docker</h1>
+<ul>
+<li><code>docker run ubuntu</code>: Crea y ejecuta un contenedor con la imagen <code>ubuntu</code>.</li>
+<li><code>docker ps</code>: Muestra los contenedores activos en ejecución.</li>
+<li><code>docker ps -a</code>: Lista todos los contenedores, incluidos los detenidos.</li>
+<li><code>docker run ubuntu [COMMAND]</code>: Ejecuta un contenedor basado en <code>ubuntu</code> con el comando especificado.</li>
+<li><code>docker run ubuntu sleep 5</code>: Inicia un contenedor con <code>ubuntu</code> y ejecuta el comando <code>sleep 5</code> (espera 5 segundos).</li>
+<li><code>docker build -t ubuntu-sleeper .</code>: Construye una imagen llamada <code>ubuntu-sleeper</code> a partir del Dockerfile en el directorio actual.</li>
+<li><code>docker run ubuntu-sleeper</code>: Ejecuta un contenedor basado en la imagen <code>ubuntu-sleeper</code>.</li>
+</ul>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/Ogdimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/Ogdimage.png" /></a></p>
+<p>docker run ubuntu-sleeper sleep 10</p>
+<p>docker run ubuntu-sleeper 10</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/rq5image.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/rq5image.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/WpLimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/WpLimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/gGbimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/gGbimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/3OZimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/3OZimage.png" /></a></p>
+<h1 id="004-commands-and-arguments-in-kubernetes">004 -  Commands and Arguments in Kubernetes</h1>
+<p>docker run --name ubuntu-sleeper ubuntu-sleeper</p>
+<p>docker run --name ubuntu-sleeper ubuntu sleeper 10</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/EeVimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/EeVimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/Ckuimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/Ckuimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/H73image.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/H73image.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/U5Wimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/U5Wimage.png" /></a></p>
+<h1 id="005-a-quick-note-on-editing-pods-and-deployments">005 - A quick note on editing Pods and Deployments</h1>
+<div class="ud-heading-xxl text-viewer--main-heading--pPafb" id="bkmrk-a-quick-note-on-edit">A quick note on editing Pods and Deployments</div>
+<h4 id="edit-a-pod">Edit a POD</h4>
+<p>Remember, you CANNOT edit specifications of an existing POD other than the below.</p>
+<div class="article-asset--container--IvjZK" id="bkmrk-spec.containers%5B%2A%5D.i"><div class="article-asset--content--H92b2 rt-scaffolding" data-purpose="safely-set-inner-html:rich-text-viewer:html">- spec.containers\[\*\].image
+- spec.initContainers\[\*\].image
+- spec.activeDeadlineSeconds
+- spec.tolerations
+
+</div></div>
+<p>For example you cannot edit the environment variables, service accounts, resource limits (all of which we will discuss later) of a running pod. But if you really want to, you have 2 options:</p>
+<p>1. Run the <code>kubectl edit pod &lt;pod name&gt;</code> command. This will open the pod specification in an editor (vi editor). Then edit the required properties. When you try to save it, you will be denied. This is because you are attempting to edit a field on the pod that is not editable.</p>
+<div class="article-asset--container--IvjZK" id="bkmrk-"><div class="article-asset--content--H92b2 rt-scaffolding" data-purpose="safely-set-inner-html:rich-text-viewer:html"><figure>![](https://img-c.udemycdn.com/redactor/raw/2019-05-30_14-46-21-89ea56fea6b993ee0ccff1625b13341e.PNG)</figure><figure>![](https://img-c.udemycdn.com/redactor/raw/2019-05-30_14-47-14-07b2638d1a72cb2d5b000c00971f6436.PNG)</figure></div></div>
+<p>A copy of the file with your changes is saved in a temporary location as shown above.</p>
+<p>You can then delete the existing pod by running the command:</p>
+<p><code>kubectl delete pod webapp</code></p>
+<p>Then create a new pod with your changes using the temporary file</p>
+<p><code>kubectl create -f /tmp/kubectl-edit-ccvrq.yaml</code></p>
+<p>2. The second option is to extract the pod definition in YAML format to a file using the command</p>
+<p><code>kubectl get pod webapp -o yaml &gt; my-new-pod.yaml</code></p>
+<p>Then make the changes to the exported file using an editor (vi editor). Save the changes</p>
+<p><code>vi my-new-pod.yaml</code></p>
+<p>Then delete the existing pod</p>
+<p><code>kubectl delete pod webapp</code></p>
+<p>Then create a new pod with the edited file</p>
+<p><code>kubectl create -f my-new-pod.yaml</code></p>
+<h4 id="edit-deployments">Edit Deployments</h4>
+<p>With Deployments you can easily edit any field/property of the POD template. Since the pod template is a child of the deployment specification, with every change the deployment will automatically delete and create a new pod with the new changes. So if you are asked to edit a property of a POD part of a deployment you may do that simply by running the command</p>
+<p><code>kubectl edit deployment my-deployment</code></p>
+<h1 id="006-environment-variables">006 - Environment Variables</h1>
+<p>En Kubernetes, las <strong>Environment Variables</strong> son configuraciones que puedes pasar a los contenedores para personalizar su comportamiento. Se definen en el manifiesto del pod o Deployment bajo la sección <code>env</code>.</p>
+<p>Estas variables pueden tener valores fijos o dinámicos, obtenidos de ConfigMaps o Secrets, y son útiles para almacenar configuraciones como credenciales o URLs sin codificarlas directamente.</p>
+<p>Ejemplo de configuración:</p>
+<div class="flex max-w-full flex-col flex-grow" id="bkmrk-"><div class="min-h-8 text-message flex w-full flex-col items-end gap-2 whitespace-normal break-words text-start [.text-message+&]:mt-5" data-message-author-role="assistant" data-message-id="f345b3d0-84c1-4964-ad19-6e4de8dabfe5" data-message-model-slug="gpt-4o" dir="auto"><div class="flex w-full flex-col gap-1 empty:hidden first:pt-[3px]"><div class="markdown prose w-full break-words dark:prose-invert light"><div class="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary dark:bg-gray-950"></div></div></div></div></div>
+<p>```yaml
+env:
+- name: APP_ENV
+  value: production
+- name: DATABASE_URL
+  valueFrom:
+    secretKeyRef:
+      name: db-secret
+      key: url</p>
+<pre><code>
+[![image.png](http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/zwUimage.png)](http://10.10.56.89/uploads/images/gallery/2025-01/zwUimage.png)
+
+En Kubernetes, los valores de las **Environment Variables** pueden definirse de tres formas principales:
+
+- **Valores fijos**: Se especifican directamente en el manifiesto.
+
+```yaml
+env:
+- name: APP_ENV
+  value: production
+</code></pre>
+<ul>
+<li><strong>Valores dinámicos desde ConfigMaps o Secrets</strong>: Se obtienen de estos objetos para gestionar configuraciones sensibles o centralizadas</li>
+</ul>
+<pre><code class="language-yaml">env:
+- name: DATABASE_URL
+  valueFrom:
+    configMapKeyRef:
+      name: app-config
+      key: database_url
+</code></pre>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/gREimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/gREimage.png" /></a></p>
+<h1 id="007-configmaps">007 - ConfigMaps</h1>
+<p>Un <strong>ConfigMap</strong> en Kubernetes es un objeto utilizado para almacenar datos de configuración no sensibles en pares clave-valor. Permite desacoplar la configuración del código de la aplicación, haciendo que sea más fácil modificar configuraciones sin necesidad de redeployar.</p>
+<p>Los ConfigMaps pueden ser referenciados en pods como variables de entorno, archivos montados en volúmenes o argumentos del contenedor. Esto los hace ideales para gestionar configuraciones como URLs, nombres de servidores y parámetros de aplicaciones.</p>
+<h5 id="imperative">Imperative</h5>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/YDfimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/YDfimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/FbSimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/FbSimage.png" /></a></p>
+<h5 id="declarative">Declarative</h5>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/YbIimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/YbIimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/m7Qimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/m7Qimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/PMQimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/PMQimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/LLhimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/LLhimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/fKHimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/fKHimage.png" /></a></p>
+<h1 id="core-concepts">Core Concepts</h1>
+<h1 id="001-recap-kubernetes-architecture">001 - Recap - Kubernetes Architecture</h1>
+<h2 id="node">Node:</h2>
+<p>Un <strong>Node</strong> en Kubernetes es una máquina (física o virtual) que ejecuta los pods, proporcionando los recursos de CPU, memoria, red y almacenamiento necesarios. Cada Node tiene un agente kubelet que comunica su estado con el clúster y administra los contenedores</p>
+<h2 id="cluster">Cluster:</h2>
+<p>Un <strong>Cluster</strong> en Kubernetes es un conjunto de nodos (máquinas) que trabajan juntos para ejecutar aplicaciones en contenedores. Está compuesto por un <strong>control plane</strong> que gestiona el estado del clúster y los <strong>nodes</strong> que ejecutan los workloads</p>
+<h2 id="master">Master:</h2>
+<p>El <strong>Master</strong> en Kubernetes (o Control Plane) es el componente central que administra el clúster, coordinando las actividades de los nodos. Incluye el <strong>API Server</strong>, <strong>Scheduler</strong>, <strong>Controller Manager</strong> y <strong>etcd</strong> para gestionar el estado y la configuración del clúster.<span class="" data-state="closed"><button aria-expanded="false" aria-haspopup="menu" class="cursor-pointer h-[30px] rounded-md px-1 text-token-text-secondary hover:bg-token-main-surface-secondary" data-state="closed" id="bkmrk-" type="button"></button></span></p>
+<h2 id="componentes">Componentes:</h2>
+<p>Los componentes principales de Kubernetes son:</p>
+<ol>
+<li>
+<p><strong>Control Plane</strong>:</p>
+<ul>
+<li><strong>API Server</strong>: Gestiona la comunicación entre los usuarios y el clúster.</li>
+<li><strong>etcd</strong>: Almacén clave-valor para el estado del clúster.</li>
+<li><strong>Scheduler</strong>: Asigna pods a nodos según recursos y políticas.</li>
+<li><strong>Controller Manager</strong>: Gestiona controladores, como replicación y endpoints.</li>
+<li>
+<p><strong>Node Components</strong>:</p>
+</li>
+<li>
+<p><strong>Kubelet</strong>: Agente que asegura que los contenedores estén en ejecución.</p>
+</li>
+<li><strong>Kube-proxy</strong>: Gestiona la red y el acceso a los servicios.</li>
+<li><strong>Container Runtime</strong>: Ejecuta contenedores (e.g., Docker, containerd).</li>
+</ul>
+</li>
+</ol>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/V9Dimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/V9Dimage.png" /></a></p>
+<h2 id="master-vs-worker-nodes">Master vs Worker Nodes</h2>
+<h3 id="master-node-control-plane"><strong>Master Node (Control Plane):</strong></h3>
+<ul>
+<li>Administra el clúster y toma decisiones como programar pods.</li>
+<li>Componentes clave: <strong>API Server</strong>, <strong>etcd</strong>, <strong>Scheduler</strong>, y <strong>Controller Manager</strong>.</li>
+<li>No ejecuta aplicaciones directamente (excepto en clústeres pequeños, como Minikube).</li>
+</ul>
+<h3 id="worker-node"><strong>Worker Node:</strong></h3>
+<ul>
+<li>Ejecuta los <strong>pods</strong> con las aplicaciones y cargas de trabajo.</li>
+<li>Componentes clave: <strong>Kubelet</strong>, <strong>Kube-proxy</strong>, y el <strong>Container Runtime</strong>.</li>
+<li>Recibe instrucciones del Master Node para ejecutar y gestionar los pods.</li>
+</ul>
+<p>En resumen, el Master coordina y los Worker Nodes ejecutan.</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/eP0image.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/eP0image.png" /></a></p>
+<h2 id="kubectl">Kubectl</h2>
+<p><strong><code>kubectl</code></strong> es la herramienta de línea de comandos para interactuar con un clúster de Kubernetes. Permite gestionar recursos como pods, servicios, y deployments, así como monitorear el estado del clúster y ejecutar comandos en los contenedores.</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/lndimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/lndimage.png" /></a></p>
+<h1 id="002-docker-vs-containerd">002 - Docker-vs-ContainerD</h1>
+<h3 id="docker"><strong>Docker</strong>:</h3>
+<ul>
+<li><strong>Descripción</strong>: Docker es una plataforma completa que facilita la creación, envío y ejecución de contenedores. Incluye un conjunto de herramientas como el <strong>Docker Engine</strong>, <strong>Docker Compose</strong>, y <strong>Docker Hub</strong>.</li>
+<li><strong>Uso</strong>: Además de ejecutar contenedores, también gestiona la construcción de imágenes y la orquestación con Docker Swarm.</li>
+</ul>
+<h3 id="containerd"><strong>containerd</strong>:</h3>
+<ul>
+<li><strong>Descripción</strong>: containerd es un runtime de contenedores que proporciona las funcionalidades básicas necesarias para ejecutar contenedores, como la ejecución de contenedores, la gestión de imágenes y la administración del ciclo de vida de los contenedores. Es más ligero y especializado en la ejecución de contenedores, sin las herramientas adicionales que ofrece Docker.</li>
+<li><strong>Uso</strong>: Usado por Kubernetes y otras plataformas de contenedores para gestionar la ejecución de contenedores.</li>
+</ul>
+<h3 id="diferencia-clave">Diferencia clave:</h3>
+<ul>
+<li><strong>Docker</strong> es más una plataforma completa que gestiona todo el ciclo de vida de los contenedores, mientras que <strong>containerd</strong> se centra en la ejecución y gestión de contenedores, siendo más eficiente para proyectos específicos.</li>
+</ul>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/DYGimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/DYGimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/LCbimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/LCbimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/hdUimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/hdUimage.png" /></a></p>
+<h1 id="003-recap-pods">003 - Recap - Pods</h1>
+<h2 id="pod">POD</h2>
+<p>Un <strong>Pod</strong> en Kubernetes es la unidad básica de despliegue que puede contener uno o más contenedores (típicamente en el mismo host). Los contenedores dentro de un pod comparten el mismo almacenamiento, red y especificaciones, lo que permite una estrecha comunicación y gestión eficiente. Los pods son efímeros y gestionados por el control plane de Kubernetes.</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/BMZimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/BMZimage.png" /></a></p>
+<h2 id="multi-container-pod"><strong>Multi-Container Pod</strong></h2>
+<p>Un <strong>Multi-Container Pod</strong> en Kubernetes es un pod que contiene más de un contenedor. Estos contenedores comparten red, almacenamiento y contexto, permitiendo una comunicación eficiente. Se usan para patrones como:</p>
+<ul>
+<li><strong>Sidecar</strong>: Un contenedor complementa al principal, como un proxy o logger.</li>
+<li><strong>Adapter</strong>: Transforma datos para otro contenedor en el mismo pod.</li>
+<li><strong>Ambassador</strong>: Maneja la comunicación con servicios externos.</li>
+</ul>
+<p>Todos los contenedores trabajan como una unidad cohesiva para cumplir un objetivo común.</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/gogimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/gogimage.png" /></a></p>
+<h2 id="kubectl_1">Kubectl</h2>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/7dBimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/7dBimage.png" /></a></p>
+<h1 id="004-pods-with-yaml">004 - Pods with YAML</h1>
+<h2 id="yaml">YAML</h2>
+<p><strong>YAML (Yet Another Markup Language)</strong> es un formato de texto legible para humanos usado en Kubernetes para definir recursos del clúster. Es jerárquico y utiliza espacios para estructurar datos en clave-valor.</p>
+<h3 id="cuatro-campos-de-nivel-superior">Cuatro campos de nivel superior</h3>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/Tsbimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/Tsbimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/pumimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/pumimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/bIRimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/bIRimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/iKqimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/iKqimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/oT0image.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/oT0image.png" /></a></p>
+<h2 id="comandos">Comandos</h2>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2024-12/u9dimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2024-12/scaled-1680-/u9dimage.png" /></a></p>
+<pre><code class="language-yaml">kubectl run redis --image=redis123 --dry-run=client -o yaml
+</code></pre>
+<p><span class="hljs-attr"><br />
+</span></p>
+<h1 id="005-creating-pod-with-yaml">005 - Creating Pod with YAML</h1>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+    costcenter: amer
+    location: MX
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+</code></pre>
+<h1 id="006-edit-pods">006 - Edit PODS</h1>
+<h2 id="edit-pods">Edit Pods</h2>
+<h4 id="a-note-on-editing-existing-pods">A Note on Editing Existing Pods</h4>
+<p>In any of the practical quizzes, if you are asked to <strong>edit an existing POD</strong>, please note the following:</p>
+<div class="article-asset--container--IvjZK" id="bkmrk-if-you-are-given-a-p"><div class="article-asset--content--H92b2 rt-scaffolding" data-purpose="safely-set-inner-html:rich-text-viewer:html">- If you are given a pod definition file, edit that file and use it to create a new pod.
+- **If you are not given a pod definition file**, you may extract the definition to a file using the below command:
+
+    `kubectl get pod <pod-name> -o yaml > pod-definition.yaml`
+
+    Then edit the file to make the necessary changes, delete, and re-create the pod.
+- To modify the properties of the pod, you can utilize the `kubectl edit pod <pod-name> `command. Please note that only the properties listed below are editable.
+
+
+    - spec.containers\[\*\].image
+    - spec.initContainers\[\*\].image
+    - spec.activeDeadlineSeconds
+    - spec.tolerations
+    - spec.terminationGracePeriodSeconds
+
+</div></div>
+
+<h1 id="007-replicasets">007 - Replicasets</h1>
+<p>Replica</p>
+<p>Una <strong>réplica</strong> en Kubernetes es una instancia de un pod que forma parte de un ReplicaSet o Deployment. Su propósito es garantizar alta disponibilidad y escalabilidad al duplicar aplicaciones en varios nodos.</p>
+<p>El número de réplicas se define en el campo <code>replicas</code> en el manifiesto YAML del recurso. Por ejemplo, con <code>replicas: 3</code>, Kubernetes mantiene siempre tres pods activos.</p>
+<p>ccReplicaset</p>
+<p>Un <strong>ReplicaSet</strong> en Kubernetes asegura que un número específico de réplicas de un pod estén siempre corriendo en el clúster. Si un pod falla o es eliminado, el ReplicaSet lo reemplaza automáticamente.</p>
+<p>Replicaset Controller</p>
+<p>El <strong>ReplicaSet Controller</strong> es un controlador en Kubernetes que gestiona los recursos <strong>ReplicaSet</strong>. Su función principal es garantizar que el número deseado de réplicas de un pod esté siempre en ejecución en el clúster.</p>
+<h3 id="funciones-clave-del-replicaset-controller">Funciones clave del ReplicaSet Controller:</h3>
+<ol>
+<li><strong>Mantener el número de réplicas:</strong> Si un pod falla o se elimina, crea uno nuevo para cumplir con el número especificado en <code>replicas</code>.</li>
+<li><strong>Autoescalado:</strong> Permite aumentar o disminuir manualmente el número de réplicas según las necesidades.</li>
+<li><strong>Reconciliación:</strong> Compara constantemente el estado actual del clúster con el estado deseado y actúa para mantenerlos alineados.</li>
+</ol>
+<p>Crear Replicacion Controller</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/image.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/image.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/0Rqimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/0Rqimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/7MNimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/7MNimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/5SKimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/5SKimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/8D6image.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/8D6image.png" /></a></p>
+<details id="bkmrk-rc-definition.yml-ap"><summary>rc-definition.yml</summary>
+
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myapp-rc
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+  replicas: 2
+</code></pre>
+
+
+</details>
+<p>```bash
+kubectl create -f rc-definition.yml</p>
+<pre><code>
+```bash
+kubectl get replicationcontroller  
+</code></pre>
+<p>Crear ReplicaSet</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/5taimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/5taimage.png" /></a></p>
+<details id="bkmrk-replicaset-definitio"><summary>replicaset-definition.yml</summary>
+
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+  replicas: 3
+  selector:
+    matchLabels:
+      type: front-end
+</code></pre>
+
+
+</details>
+<p>```bash
+kubectl create -f replicaset-definition.yml</p>
+<pre><code>
+```bash
+kubectl get replicaset
+</code></pre>
+<p>Labels and Selectors</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/czRimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/czRimage.png" /></a></p>
+<p>Scale</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/i4Zimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/i4Zimage.png" /></a></p>
+<pre><code class="language-bash">kubectl replace -f replicaset-definition.yml
+</code></pre>
+<pre><code class="language-yaml">kubectl scale --replicas=7 -f replicaset-definition.yml
+</code></pre>
+<pre><code class="language-bash">kubectl scale --replicas=8 replicaset myapp-replicaset 
+</code></pre>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/wLQimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/wLQimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/1KKimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/1KKimage.png" /></a></p>
+<h1 id="008-deployments">008 - Deployments</h1>
+<h3 id="deployment">Deployment</h3>
+<p>Un <strong>Deployment</strong> en Kubernetes es un recurso que administra la creación y el escalado de pods, asegurando que siempre cumplan con el estado deseado. Facilita las actualizaciones y escalabilidad de aplicaciones.</p>
+<p>Permite implementar estrategias como actualizaciones progresivas (rolling updates) y revertir cambios si algo falla. Es ideal para gestionar aplicaciones de forma declarativa y mantener alta disponibilidad.</p>
+<h4 id="rolling-updates">Rolling updates</h4>
+<p>Las <strong>rolling updates</strong> en Kubernetes son una estrategia para actualizar aplicaciones sin interrupciones. Kubernetes reemplaza gradualmente los pods antiguos por nuevos, asegurando que la aplicación permanezca disponible durante el proceso.</p>
+<p>Se controla el número de pods que se crean o eliminan simultáneamente usando los parámetros <code>maxUnavailable</code> y <code>maxSurge</code> en el Deployment. Esto permite realizar actualizaciones de forma segura y progresiva.</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/tUzimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/tUzimage.png" /></a></p>
+<h3 id="definition">Definition</h3>
+<p>Un <strong>Deployment</strong> en Kubernetes está compuesto por los siguientes elementos clave:</p>
+<ol>
+<li><strong>Metadata</strong>: Incluye información como el nombre del Deployment y etiquetas que ayudan a identificar recursos asociados.</li>
+<li><strong>Spec (Especificación)</strong>: Define el estado deseado, incluyendo el número de réplicas, el selector de pods, y la plantilla del pod (contenedores, imágenes y configuraciones).</li>
+<li><strong>Selector</strong>: Identifica los pods gestionados por el Deployment basándose en etiquetas.</li>
+</ol>
+<details id="bkmrk-deployment-definitio"><summary>deployment-definition.yaml</summary>
+
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+  replicas: 6
+  selector:
+    matchLabels:
+      type: front-end
+</code></pre>
+
+
+</details>
+<p>```
+kubectl create -f deployment-definition.yaml</p>
+<pre><code>
+</code></pre>
+<p>kubectl get deployments</p>
+<pre><code>
+</code></pre>
+<p>kubectl get replicaset</p>
+<pre><code>
+</code></pre>
+<p>kubectl get pods</p>
+<pre><code>
+</code></pre>
+<p>kubectl get all</p>
+<pre><code>
+# 009 - Certification Tip: Formatting Output with kubectl
+
+The default output format for all **kubectl** commands is the human-readable plain-text format.
+
+The -o flag allows us to output the details in several different formats.
+
+**kubectl \[command\] \[TYPE\] \[NAME\] -o &amp;lt;output\_format&amp;gt;**
+
+Here are some of the commonly used formats:
+
+1. `-o json`Output a JSON formatted API object.
+2. `-o name`Print only the resource name and nothing else.
+3. `-o wide`Output in the plain-text format with any additional information.
+4. `-o yaml`Output a YAML formatted API object.
+
+Here are some useful examples:
+
+- **Output with JSON format:**
+
+```json
+master $ kubectl create namespace test-123 --dry-run -o json
+{
+    &quot;kind&quot;: &quot;Namespace&quot;,
+    &quot;apiVersion&quot;: &quot;v1&quot;,
+    &quot;metadata&quot;: {
+        &quot;name&quot;: &quot;test-123&quot;,
+        &quot;creationTimestamp&quot;: null
+    },
+    &quot;spec&quot;: {},
+    &quot;status&quot;: {}
+}
+master $
+</code></pre>
+<ul>
+<li><strong>Output with YAML format:</strong></li>
+</ul>
+<pre><code class="language-yaml">master $ kubectl create namespace test-123 --dry-run -o yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: test-123
+spec: {}
+status: {}
+</code></pre>
+<div class="ud-component--base-components--code-block" id="bkmrk-"></div>
+<ul>
+<li><strong>Output with wide (additional details):</strong></li>
+</ul>
+<p>Probably the most common format used to print additional details about the object:</p>
+<pre><code>master $ kubectl get pods -o wide
+NAME      READY   STATUS    RESTARTS   AGE     IP          NODE     NOMINATED NODE   READINESS GATES
+busybox   1/1     Running   0          3m39s   10.36.0.2   node01   &lt;none&gt;           &lt;none&gt;
+ningx     1/1     Running   0          7m32s   10.44.0.1   node03   &lt;none&gt;           &lt;none&gt;
+redis     1/1     Running   0          3m59s   10.36.0.1   node01   &lt;none&gt;           &lt;none&gt;
+master $
+</code></pre>
+<div class="ud-component--base-components--code-block" id="bkmrk--1"><div></div></div>
+<p>For more details, refer:</p>
+<p><a href="https://kubernetes.io/docs/reference/kubectl/overview/"><strong>https://kubernetes.io/docs/reference/kubectl/overview/</strong></a></p>
+<p><a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet"><strong>https://kubernetes.io/docs/reference/kubectl/cheatsheet</strong></a><strong>/</strong></p>
+<h1 id="010-namespaces">010 - Namespaces</h1>
+<p>Un <strong>namespace</strong> en Kubernetes es un mecanismo lógico para dividir recursos dentro de un clúster. Ayuda a organizar y aislar aplicaciones, facilitando la gestión de múltiples equipos o entornos (como desarrollo, pruebas y producción) en un mismo clúster.</p>
+<p>Los namespaces permiten que recursos con el mismo nombre coexistan en el clúster, siempre que pertenezcan a namespaces diferentes. Kubernetes incluye namespaces predeterminados como <code>default</code>, <code>kube-system</code> y <code>kube-public</code>.</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/9qqimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/9qqimage.png" /></a></p>
+<p>El aislamiento en <strong>namespaces</strong> de Kubernetes permite separar recursos y configuraciones entre diferentes espacios lógicos dentro del clúster. Esto asegura que las aplicaciones o servicios de un namespace no interfieran con los de otro.</p>
+<p>Cada namespace tiene su propio conjunto de recursos, como pods, servicios y configuraciones, permitiendo un control granular de acceso mediante roles y políticas (<code>Role</code> y <code>RoleBinding</code>). Este enfoque es útil para gestionar múltiples equipos o entornos en un mismo clúster.</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/E8rimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/E8rimage.png" /></a></p>
+<p>n Kubernetes, los <strong>namespaces</strong> pueden tener límites de recursos definidos para controlar el consumo de CPU y memoria dentro de ellos. Esto se logra utilizando un objeto llamado <code>ResourceQuota</code>, que establece restricciones en el uso total de recursos en un namespace específico.</p>
+<p>Por ejemplo, se puede limitar la cantidad total de memoria o CPU que los pods en un namespace pueden usar, evitando que una aplicación consuma más de lo asignado y afecte a otras aplicaciones en el clúster. Esto mejora la gestión de recursos y la estabilidad del sistema.</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/NgOimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/NgOimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/ZIdimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/ZIdimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/2MMimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/2MMimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/pZsimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/pZsimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/GQmimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/GQmimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/W5mimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/W5mimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/FFkimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/FFkimage.png" /></a></p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/o7Limage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/o7Limage.png" /></a></p>
+<p>Un <strong>ResourceQuota</strong> en Kubernetes es un objeto que impone límites en el uso total de recursos dentro de un namespace. Controla la cantidad de recursos como CPU, memoria, pods, servicios y almacenamiento que los usuarios o aplicaciones pueden consumir en ese namespace.</p>
+<p>Se utiliza para evitar que un namespace consuma más recursos de los permitidos, asegurando una distribución justa en el clúster. Es especialmente útil en clústeres compartidos por múltiples equipos o aplicaciones.</p>
+<p><a href="http://10.10.56.89/uploads/images/gallery/2025-01/gkGimage.png"><img alt="image.png" src="http://10.10.56.89/uploads/images/gallery/2025-01/scaled-1680-/gkGimage.png" /></a></p>
+<h1 id="011-certification-tip-imperative-commands">011 - Certification Tip: Imperative Commands</h1>
+<p>While you would be working mostly the declarative way - using definition files, imperative commands can help in getting one-time tasks done quickly, as well as generate a definition template easily. This would help save a considerable amount of time during your exams.</p>
+<p>Before we begin, familiarize yourself with the two options that can come in handy while working with the below commands:</p>
+<p><code>--dry-run</code>: By default, as soon as the command is run, the resource will be created. If you simply want to test your command, use the <code>--dry-run=client</code> option. This will not create the resource. Instead, tell you whether the resource can be created and if your command is right.</p>
+<p><code>-o yaml</code>: This will output the resource definition in YAML format on the screen.</p>
+<p>Use the above two in combination along with Linux output redirection to generate a resource definition file quickly, that you can then modify and create resources as required, instead of creating the files from scratch.</p>
+<p><code>kubectl run nginx --image=nginx --dry-run=client -o yaml &gt; nginx-pod.yaml</code></p>
+<h4 id="pod_1">POD</h4>
+<p><strong>Create an NGINX Pod</strong></p>
+<p><code>kubectl run nginx --image=nginx</code></p>
+<p><strong>Generate POD Manifest YAML file (-o yaml). Don't create it(--dry-run)</strong></p>
+<p><code>kubectl run nginx --image=nginx --dry-run=client -o yaml</code></p>
+<h4 id="deployment_1">Deployment</h4>
+<p><strong>Create a deployment</strong></p>
+<p><code>kubectl create deployment --image=nginx nginx</code></p>
+<p><strong>Generate Deployment YAML file (-o yaml). Don't create it(--dry-run)</strong></p>
+<p><code>kubectl create deployment --image=nginx nginx --dry-run -o yaml</code></p>
+<p><strong>Generate Deployment with 4 Replicas</strong></p>
+<p><code>kubectl create deployment nginx --image=nginx --replicas=4</code></p>
+<p>You can also scale deployment using the <code>kubectl scale</code> command.</p>
+<p><code>kubectl scale deployment nginx --replicas=4</code></p>
+<p><strong>Another way to do this is to save the YAML definition to a file and modify</strong></p>
+<p>kubectl create deployment nginx --image=nginx<code>--dry-run=client -o yaml &gt; nginx-deployment.yaml</code></p>
+<p>You can then update the YAML file with the replicas or any other field before creating the deployment.</p>
+<h4 id="service">Service</h4>
+<p><strong>Create a Service named redis-service of type ClusterIP to expose pod redis on port 6379</strong></p>
+<p><code>kubectl expose pod redis --port=6379 --name redis-service --dry-run=client -o yaml</code></p>
+<p>(This will automatically use the pod's labels as selectors)</p>
+<p>Or</p>
+<p><code>kubectl create service clusterip redis --tcp=6379:6379 --dry-run=client -o yaml</code> (This will not use the pods' labels as selectors; instead it will assume selectors as <strong>app=redis.</strong> <a href="https://github.com/kubernetes/kubernetes/issues/46191">You cannot pass in selectors as an option.</a> So it does not work well if your pod has a different label set. So generate the file and modify the selectors before creating the service)</p>
+<p><strong>Create a Service named nginx of type NodePort to expose pod nginx's port 80 on port 30080 on the nodes:</strong></p>
+<p><code>kubectl expose pod nginx --port=80 --name nginx-service --type=NodePort --dry-run=client -o yaml</code></p>
+<p>(This will automatically use the pod's labels as selectors, <a href="https://github.com/kubernetes/kubernetes/issues/25478">but you cannot specify the node port</a>. You have to generate a definition file and then add the node port in manually before creating the service with the pod.)</p>
+<p>Or</p>
+<p><code>kubectl create service nodeport nginx --tcp=80:80 --node-port=30080 --dry-run=client -o yaml</code></p>
+<p>(This will not use the pods' labels as selectors)</p>
+<p>Both the above commands have their own challenges. While one of it cannot accept a selector the other cannot accept a node port. I would recommend going with the <code>kubectl expose</code> command. If you need to specify a node port, generate a definition file using the same command and manually input the nodeport before creating the service.</p>
+<p><strong>Reference:</strong></p>
+<p><a href="https://kubernetes.io/docs/reference/kubectl/conventions/">https://kubernetes.io/docs/reference/kubectl/conventions/</a></p>
+<h1 id="practice-test">Practice Test</h1>
+<h1 id="001-pods">001 - Pods</h1>
+<p>Create a new pod with the <code>nginx</code> image.</p>
+<pre><code class="language-bash">kubectl run nginx --image=nginx
+</code></pre>
+<p>Delete the <code>webapp</code> Pod.</p>
+<pre><code class="language-bash">kubectl delete pod webapp
+</code></pre>
+<p>Create a new pod with the name <code>redis</code> and the image <code>redis123</code>.</p>
+<p>Metodo 1:</p>
+<pre><code class="language-bash">kubectl run redis --image=redis123 -o yaml
+</code></pre>
+<details id="bkmrk-pod-definition.yaml-"><summary>pod-definition.yaml</summary>
+
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: &quot;2025-01-27T19:03:35Z&quot;
+  labels:
+    run: redis
+  name: redis
+  namespace: default
+  resourceVersion: &quot;1059&quot;
+  uid: 74c5fb2d-9479-4d03-ba3b-509663a2245b
+spec:
+  containers:
+  - image: redis123
+    imagePullPolicy: Always
+    name: redis
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-5k4xq
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-5k4xq
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  phase: Pending
+  qosClass: BestEffort
+</code></pre>
+
+
+</details>
+<p>Metodo 2:</p>
+<details id="bkmrk-pod-definition-v1.ya"><summary>pod-definition-v1.yaml</summary>
+
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: Pod
+metadata:
+  name: redis
+spec:
+  containers:
+  - name: redis
+    image: redis123
+</code></pre>
+
+
+</details>
+
+<h1 id="002-replicasets">002 - Replicasets</h1>
+<p>Create a ReplicaSet using the <code>replicaset-definition-1.yaml</code> file located at <code>/root/</code>.</p>
+<p>There is an issue with the file, so try to fix it.</p>
+<details id="bkmrk-issue-apiversion%3A-v1"><summary>Issue</summary>
+
+
+<pre><code class="language-yaml">apiVersion: v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+</code></pre>
+
+
+</details>
+<p>```bash
+kubectl api-resources | grep replicaset</p>
+<pre><code>
+&lt;details id=&quot;bkmrk-fixed-apiversion%3A-ap&quot;&gt;&lt;summary&gt;Fixed&lt;/summary&gt;
+
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+</code></pre>
+<p></details>Fix the issue in the <code>replicaset-definition-2.yaml</code> file and create a <code>ReplicaSet</code> using it.</p>
+<p>This file is located at <code>/root/</code>.</p>
+<details id="bkmrk-issue-apiversion%3A-ap"><summary>Issue</summary>
+
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+</code></pre>
+
+
+</details>
+<details id="bkmrk-fixed-apiversion%3A-ap-1"><summary>Fixed</summary>
+
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: nginx
+  template:
+    metadata:
+      labels:
+        tier: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+</code></pre>
+
+
+</details>
+<p>Fix the original replica set <code>new-replica-set</code> to use the correct <code>busybox</code> image.</p>
+<p>Either delete and recreate the ReplicaSet or Update the existing ReplicaSet and then delete all PODs, so new ones with the correct image will be created.</p>
+<pre><code>kubectl edit replicaset new-replica-set 
+</code></pre>
+<details id="bkmrk-issue-apiversion%3A-ap-1"><summary>Issue</summary>
+
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  creationTimestamp: &quot;2025-01-27T19:19:58Z&quot;
+  generation: 2
+  name: new-replica-set
+  namespace: default
+  resourceVersion: &quot;1593&quot;
+  uid: aed6557a-5462-4d6d-8e41-39216539f2f4
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      name: busybox-pod
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: busybox-pod
+    spec:
+      containers:
+      - command:
+        - sh
+        - -c
+        - echo Hello Kubernetes! &amp;&amp; sleep 3600
+        image: busybox777
+        imagePullPolicy: Always
+        name: busybox-container
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  fullyLabeledReplicas: 4
+  observedGeneration: 2
+  replicas: 4
+</code></pre>
+
+
+</details>
+<details id="bkmrk-fixed-apiversion%3A-ap-2"><summary>Fixed</summary>
+
+
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  creationTimestamp: &quot;2025-01-27T19:19:58Z&quot;
+  generation: 2
+  name: new-replica-set
+  namespace: default
+  resourceVersion: &quot;1593&quot;
+  uid: aed6557a-5462-4d6d-8e41-39216539f2f4
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      name: busybox-pod
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: busybox-pod
+    spec:
+      containers:
+      - command:
+        - sh
+        - -c
+        - echo Hello Kubernetes! &amp;&amp; sleep 3600
+        image: busybox
+        imagePullPolicy: Always
+        name: busybox-container
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  fullyLabeledReplicas: 4
+  observedGeneration: 2
+  replicas: 4
+</code></pre>
+
+
+</details>
+<p>```bash
+kubectl delete pod new-replica-set-mr7mk  new-replica-set-rvlcc new-replica-set-vn9fs</p>
+<pre><code>
+Scale the ReplicaSet to 5 PODs.
+
+Use `kubectl scale` command or edit the replicaset using `kubectl edit replicaset`.
+
+Metodo Imperativo
+
+```bash
+kubectl scale --replicas=5 rs/new-replica-set
+</code></pre>
+<p>Metodo Declarativo</p>
+<pre><code class="language-bash">kubectl edit rs new-replica-set
+</code></pre>
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  creationTimestamp: &quot;2025-01-27T19:19:58Z&quot;
+  generation: 7
+  name: new-replica-set
+  namespace: default
+  resourceVersion: &quot;1955&quot;
+  uid: aed6557a-5462-4d6d-8e41-39216539f2f4
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: busybox-pod
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: busybox-pod
+    spec:
+      containers:
+      - command:
+        - sh
+        - -c
+        - echo Hello Kubernetes! &amp;&amp; sleep 3600
+        image: busybox
+        imagePullPolicy: Always
+        name: busybox-container
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 5
+  fullyLabeledReplicas: 5
+  observedGeneration: 7
+  readyReplicas: 5
+  replicas: 5
+</code></pre>
+<p>Now scale the ReplicaSet down to 2 PODs.</p>
+<p>Use the <code>kubectl scale</code> command or edit the replicaset using <code>kubectl edit replicaset</code>.</p>
+<pre><code class="language-bash">kubectl scale --replicas=2 rs/new-replica-set
+</code></pre>
+<h1 id="003-deployments">003 - Deployments</h1>
+<p>Create a new Deployment using the <code>deployment-definition-1.yaml</code> file located at <code>/root/</code>.</p>
+<p>There is an issue with the file, so try to fix it.</p>
+<pre><code class="language-yaml">---
+apiVersion: apps/v1
+kind: deployment
+metadata:
+  name: deployment-1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: busybox-pod
+  template:
+    metadata:
+      labels:
+        name: busybox-pod
+    spec:
+      containers:
+      - name: busybox-container
+        image: busybox888
+        command:
+        - sh
+        - &quot;-c&quot;
+        - echo Hello Kubernetes! &amp;&amp; sleep 3600
+</code></pre>
+<details id="bkmrk-deployment-definitio"><summary>deployment-definition-1.yaml \[Fixed\]</summary>
+
+
+<pre><code class="language-yaml">---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: busybox-pod
+  template:
+    metadata:
+      labels:
+        name: busybox-pod
+    spec:
+      containers:
+      - name: busybox-container
+        image: busybox
+        command:
+        - sh
+        - &quot;-c&quot;
+        - echo Hello Kubernetes! &amp;&amp; sleep 3600
+</code></pre>
+
+
+</details>
+<p>Create a new Deployment with the below attributes using your own deployment definition file.</p>
+<p>Name: <code>httpd-frontend</code>;<br />
+Replicas: <code>3</code>;<br />
+Image: <code>httpd:2.4-alpine</code></p>
+<h1 id="004-namespaces">004 - Namespaces</h1>
+<p>How many pods exist in the <code>research</code> namespace?</p>
+<details id="bkmrk-solution-kubectl-get"><summary>Solution</summary>
+
+
+<pre><code class="language-bash">kubectl get pods -n research
+</code></pre>
+
+
+</details>
+<p>Create a POD in the <code>finance</code> namespace.</p>
+<p>Use the spec given below.</p>
+<div class="flex flex-col" id="bkmrk-"></div>
+<div class="text-tx-secondary-light dark:text-tx-secondary-dark my-6" data-testid="test-result" id="bkmrk-name%3A-redis-image-na"><div class="mb-2 flex items-start justify-start space-x-[10px]"><section class="break-words w-full">- Name: redis
+- Image name: redis
+
+<details><summary>Solution</summary>
+
+
+<pre><code class="language-bash">kubectl run redis --image=redis -n finance
+</code></pre>
+
+
+</details>Which namespace has the `blue` pod in it?
+
+<details><summary>Hint</summary>
+
+
+<pre><code class="language-bash">kubectl get pods --all-namespaces 
+</code></pre>
+
+
+</details></section></div></div>
+
+<h1 id="005-imperative-commands">005 - Imperative Commands</h1>
+<h1 id="skels">Skels</h1>
+<h1 id="001-pods_1">001 - Pods</h1>
+<pre><code class="language-yaml">apiVersion: v1  # Obligatorio: Versión de la API de Kubernetes.
+kind: Pod       # Obligatorio: Tipo de recurso (en este caso, Pod).
+metadata:
+  name: &lt;nombre-del-pod&gt;  # Obligatorio: Nombre único del Pod.
+  labels:                 # Opcional: Etiquetas para identificar el Pod.
+    app: &lt;etiqueta-app&gt;
+spec:                     # Obligatorio: Especificación del Pod.
+  containers:             # Obligatorio: Lista de contenedores en el Pod.
+  - name: &lt;nombre-del-contenedor&gt;  # Obligatorio: Nombre del contenedor.
+    image: &lt;imagen-del-contenedor&gt;  # Obligatorio: Imagen del contenedor.
+    ports:                          # Opcional: Puertos que expone el contenedor.
+    - containerPort: &lt;puerto-del-contenedor&gt;
+    env:                            # Opcional: Variables de entorno.
+    - name: &lt;nombre-de-la-variable&gt;
+      value: &quot;&lt;valor-de-la-variable&gt;&quot;
+    resources:                      # Opcional: Límites y solicitudes de recursos.
+      requests:
+        memory: &quot;&lt;memoria-mínima&gt;&quot;
+        cpu: &quot;&lt;cpu-mínima&gt;&quot;
+      limits:
+        memory: &quot;&lt;memoria-máxima&gt;&quot;
+        cpu: &quot;&lt;cpu-máxima&gt;&quot;
+  restartPolicy: Always  # Opcional: Política de reinicio (Always, OnFailure, Never).
+</code></pre>
+<h1 id="002-replicasets_1">002 - Replicasets</h1>
+<pre><code class="language-yaml">apiVersion: apps/v1  # Obligatorio: Versión de la API de Kubernetes.
+kind: ReplicaSet     # Obligatorio: Tipo de recurso (en este caso, ReplicaSet).
+metadata:
+  name: &lt;nombre-del-replicaset&gt;  # Obligatorio: Nombre único del ReplicaSet.
+  labels:                        # Opcional: Etiquetas para identificar el ReplicaSet.
+    app: &lt;etiqueta-app&gt;
+spec:                            # Obligatorio: Especificación del ReplicaSet.
+  replicas: &lt;número-de-réplicas&gt;  # Obligatorio: Número de Pods que deseas ejecutar.
+  selector:                       # Obligatorio: Selector para identificar los Pods gestionados.
+    matchLabels:
+      app: &lt;etiqueta-app&gt;          # Debe coincidir con las etiquetas del Pod.
+  template:                       # Obligatorio: Plantilla para crear los Pods.
+    metadata:
+      labels:                     # Obligatorio: Etiquetas del Pod.
+        app: &lt;etiqueta-app&gt;
+    spec:                         # Obligatorio: Especificación del Pod.
+      containers:                 # Obligatorio: Lista de contenedores en el Pod.
+      - name: &lt;nombre-del-contenedor&gt;  # Obligatorio: Nombre del contenedor.
+        image: &lt;imagen-del-contenedor&gt;  # Obligatorio: Imagen del contenedor.
+        ports:                          # Opcional: Puertos que expone el contenedor.
+        - containerPort: &lt;puerto-del-contenedor&gt;
+        env:                            # Opcional: Variables de entorno.
+        - name: &lt;nombre-de-la-variable&gt;
+          value: &quot;&lt;valor-de-la-variable&gt;&quot;
+        resources:                      # Opcional: Límites y solicitudes de recursos.
+          requests:
+            memory: &quot;&lt;memoria-mínima&gt;&quot;
+            cpu: &quot;&lt;cpu-mínima&gt;&quot;
+          limits:
+            memory: &quot;&lt;memoria-máxima&gt;&quot;
+            cpu: &quot;&lt;cpu-máxima&gt;&quot;
+</code></pre>
+<h1 id="003-deployments_1">003 - Deployments</h1>
+<pre><code class="language-yaml">apiVersion: apps/v1  # Obligatorio: Versión de la API de Kubernetes.
+kind: Deployment     # Obligatorio: Tipo de recurso (en este caso, Deployment).
+metadata:
+  name: &lt;nombre-del-deployment&gt;  # Obligatorio: Nombre único del Deployment.
+  labels:                        # Opcional: Etiquetas para identificar el Deployment.
+    app: &lt;etiqueta-app&gt;
+spec:                            # Obligatorio: Especificación del Deployment.
+  replicas: &lt;número-de-réplicas&gt;  # Opcional: Número de Pods que deseas ejecutar (por defecto es 1).
+  selector:                       # Obligatorio: Selector para identificar los Pods gestionados.
+    matchLabels:
+      app: &lt;etiqueta-app&gt;          # Debe coincidir con las etiquetas del Pod.
+  template:                       # Obligatorio: Plantilla para crear los Pods.
+    metadata:
+      labels:                     # Obligatorio: Etiquetas del Pod.
+        app: &lt;etiqueta-app&gt;
+    spec:                         # Obligatorio: Especificación del Pod.
+      containers:                 # Obligatorio: Lista de contenedores en el Pod.
+      - name: &lt;nombre-del-contenedor&gt;  # Obligatorio: Nombre del contenedor.
+        image: &lt;imagen-del-contenedor&gt;  # Obligatorio: Imagen del contenedor.
+        ports:                          # Opcional: Puertos que expone el contenedor.
+        - containerPort: &lt;puerto-del-contenedor&gt;
+        env:                            # Opcional: Variables de entorno.
+        - name: &lt;nombre-de-la-variable&gt;
+          value: &quot;&lt;valor-de-la-variable&gt;&quot;
+        resources:                      # Opcional: Límites y solicitudes de recursos.
+          requests:
+            memory: &quot;&lt;memoria-mínima&gt;&quot;
+            cpu: &quot;&lt;cpu-mínima&gt;&quot;
+          limits:
+            memory: &quot;&lt;memoria-máxima&gt;&quot;
+            cpu: &quot;&lt;cpu-máxima&gt;&quot;
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
